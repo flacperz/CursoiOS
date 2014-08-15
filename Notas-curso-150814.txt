@@ -1,0 +1,31 @@
+
+
+@Syntesize: Permite set o get hacia una variable de una clase.
+@dynamic: investigarlo.s
+Todas las clases hechas por el programador heredan de NS Object.
+
+isEqual: Metodo que compara dos valores y regresa true or false.
+
+Mensajes:
+	Metodos de instancia , -Nombre
+	Metodo de clase , + Nombre
+
+
+
+Inicialización:
+	alloc:reserva espacio en memoria.
+	Init: constructor por defecto.
+
+Apuntadores:
+	Crean un enlace hacia la dirección de memoria reservada para una variable.(*,&)
+
+Ejemplo de apuntador:
+
+	NSString *n = [[NSString alloc]];
+
+@property: Define una propiedad dentro de una clase.
+
+
+
+
+
