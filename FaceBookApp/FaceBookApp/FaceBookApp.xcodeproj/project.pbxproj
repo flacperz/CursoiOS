@@ -15,13 +15,13 @@
 		D103ED98199FB23E00E6FB6A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D103ED97199FB23E00E6FB6A /* AppDelegate.m */; };
 		D103ED9B199FB23E00E6FB6A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D103ED99199FB23E00E6FB6A /* Main_iPhone.storyboard */; };
 		D103ED9E199FB23E00E6FB6A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D103ED9C199FB23E00E6FB6A /* Main_iPad.storyboard */; };
-		D103EDA1199FB23E00E6FB6A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D103EDA0199FB23E00E6FB6A /* ViewController.m */; };
 		D103EDA3199FB23E00E6FB6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D103EDA2199FB23E00E6FB6A /* Images.xcassets */; };
 		D103EDAA199FB23E00E6FB6A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D103EDA9199FB23E00E6FB6A /* XCTest.framework */; };
 		D103EDAB199FB23E00E6FB6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D103ED87199FB23E00E6FB6A /* Foundation.framework */; };
 		D103EDAC199FB23E00E6FB6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D103ED8B199FB23E00E6FB6A /* UIKit.framework */; };
 		D103EDB4199FB23E00E6FB6A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D103EDB2199FB23E00E6FB6A /* InfoPlist.strings */; };
 		D103EDB6199FB23E00E6FB6A /* FaceBookAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D103EDB5199FB23E00E6FB6A /* FaceBookAppTests.m */; };
+		D103EDC4199FC17400E6FB6A /* TimeLineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D103EDC3199FC17400E6FB6A /* TimeLineTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +47,14 @@
 		D103ED97199FB23E00E6FB6A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D103ED9A199FB23E00E6FB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D103ED9D199FB23E00E6FB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		D103ED9F199FB23E00E6FB6A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D103EDA0199FB23E00E6FB6A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D103EDA2199FB23E00E6FB6A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D103EDA8199FB23E00E6FB6A /* FaceBookAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceBookAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D103EDA9199FB23E00E6FB6A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D103EDB1199FB23E00E6FB6A /* FaceBookAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceBookAppTests-Info.plist"; sourceTree = "<group>"; };
 		D103EDB3199FB23E00E6FB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D103EDB5199FB23E00E6FB6A /* FaceBookAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceBookAppTests.m; sourceTree = "<group>"; };
+		D103EDC2199FC17400E6FB6A /* TimeLineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineTableViewController.h; sourceTree = "<group>"; };
+		D103EDC3199FC17400E6FB6A /* TimeLineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +118,10 @@
 				D103ED97199FB23E00E6FB6A /* AppDelegate.m */,
 				D103ED99199FB23E00E6FB6A /* Main_iPhone.storyboard */,
 				D103ED9C199FB23E00E6FB6A /* Main_iPad.storyboard */,
-				D103ED9F199FB23E00E6FB6A /* ViewController.h */,
-				D103EDA0199FB23E00E6FB6A /* ViewController.m */,
 				D103EDA2199FB23E00E6FB6A /* Images.xcassets */,
 				D103ED8E199FB23E00E6FB6A /* Supporting Files */,
+				D103EDC2199FC17400E6FB6A /* TimeLineTableViewController.h */,
+				D103EDC3199FC17400E6FB6A /* TimeLineTableViewController.m */,
 			);
 			path = FaceBookApp;
 			sourceTree = "<group>";
@@ -253,9 +253,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D103EDA1199FB23E00E6FB6A /* ViewController.m in Sources */,
 				D103ED98199FB23E00E6FB6A /* AppDelegate.m in Sources */,
 				D103ED94199FB23E00E6FB6A /* main.m in Sources */,
+				D103EDC4199FC17400E6FB6A /* TimeLineTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
