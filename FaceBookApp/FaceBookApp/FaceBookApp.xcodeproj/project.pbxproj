@@ -22,6 +22,7 @@
 		D103EDB4199FB23E00E6FB6A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D103EDB2199FB23E00E6FB6A /* InfoPlist.strings */; };
 		D103EDB6199FB23E00E6FB6A /* FaceBookAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D103EDB5199FB23E00E6FB6A /* FaceBookAppTests.m */; };
 		D103EDC4199FC17400E6FB6A /* TimeLineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D103EDC3199FC17400E6FB6A /* TimeLineTableViewController.m */; };
+		D1F88BF5199FE45200FB735E /* DetallePublicacionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F88BF4199FE45200FB735E /* DetallePublicacionTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		D103EDB5199FB23E00E6FB6A /* FaceBookAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceBookAppTests.m; sourceTree = "<group>"; };
 		D103EDC2199FC17400E6FB6A /* TimeLineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineTableViewController.h; sourceTree = "<group>"; };
 		D103EDC3199FC17400E6FB6A /* TimeLineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineTableViewController.m; sourceTree = "<group>"; };
+		D1F88BF3199FE45200FB735E /* DetallePublicacionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetallePublicacionTableViewController.h; sourceTree = "<group>"; };
+		D1F88BF4199FE45200FB735E /* DetallePublicacionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetallePublicacionTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				D103ED8E199FB23E00E6FB6A /* Supporting Files */,
 				D103EDC2199FC17400E6FB6A /* TimeLineTableViewController.h */,
 				D103EDC3199FC17400E6FB6A /* TimeLineTableViewController.m */,
+				D1F88BF3199FE45200FB735E /* DetallePublicacionTableViewController.h */,
+				D1F88BF4199FE45200FB735E /* DetallePublicacionTableViewController.m */,
 			);
 			path = FaceBookApp;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D103ED98199FB23E00E6FB6A /* AppDelegate.m in Sources */,
+				D1F88BF5199FE45200FB735E /* DetallePublicacionTableViewController.m in Sources */,
 				D103ED94199FB23E00E6FB6A /* main.m in Sources */,
 				D103EDC4199FC17400E6FB6A /* TimeLineTableViewController.m in Sources */,
 			);
@@ -470,6 +476,7 @@
 				D103EDBB199FB23E00E6FB6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D103EDBC199FB23E00E6FB6A /* Build configuration list for PBXNativeTarget "FaceBookAppTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +485,7 @@
 				D103EDBE199FB23E00E6FB6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

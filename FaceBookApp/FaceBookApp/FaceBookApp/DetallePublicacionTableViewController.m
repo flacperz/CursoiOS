@@ -27,6 +27,9 @@
 {
     [super viewDidLoad];
     
+    self.lblAutor.text = [self.publicacion objectForKey:@"autor"];
+    self.textMensaje.text = [self.publicacion objectForKey:@"mensaje"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -46,13 +49,16 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+    if ( section == 0){
+        return 1;
+    }
     return 0;
 }
 
@@ -66,6 +72,12 @@
     return cell;
 }
 */
+
+#pragma mark - Actions
+
+- (IBAction)cerrar:(UIBarButtonItem *)sender{
+    [self dismissViewControllerAnimated: YES completion:nil];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -111,9 +123,14 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ( [[segue identifier] isEqualToString:@"detallePublicacionSegue"]  )
+    {
+        DetallePublicacionTableViewController *dpvc = [segue destinationViewController];
+        dpvc.publicacion;
+    }
+    
 }
-*/
 
+*/
 @end

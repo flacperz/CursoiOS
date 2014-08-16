@@ -7,12 +7,17 @@
 //
 
 #import "TimeLineTableViewController.h"
+#import "DetallePublicacionTableViewController.h"
 
 @interface TimeLineTableViewController ()
 
 @end
 
-@implementation TimeLineTableViewController
+@implementation TimeLineTableViewController{
+    
+    //Variable de instancia.
+    NSMutableArray *publicaciones;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,15 +28,74 @@
     return self;
 }
 
+//Carga todas las configuraciones antes de visualizar la pantalla.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    publicaciones = [[NSMutableArray alloc] init];
+    
+    /*
+     Mensaje:
+     Autor:
+     Similar en JSON:
+     {
+        mensaje:"Y andale...atrapan al chapo",
+        autor: "EL DEBATE"
+     }
+     */
+    
+    //Objeto publicacion
+    NSMutableDictionary *publicacion = [[NSMutableDictionary alloc] init];
+    
+    
+    //Primera publicacion
+    [publicacion setValue:@"Y andale...Atraparon al chapo!!!" forKey:@"mensaje"];
+    [publicacion setValue:@"EL DEBATE" forKey:@"autor"];
+    
+    [publicaciones addObject:publicacion];
+    
+    
+    //Segunda publicacion
+    publicacion = [[NSMutableDictionary alloc] init];
+    [publicacion setValue:@"Segunda publicacion!!!" forKey:@"mensaje"];
+    [publicacion setValue:@"EL DEBATE" forKey:@"autor"];
+    
+    [publicaciones addObject:publicacion];
+    
+    
+    //Tercer publicacion
+    publicacion = [[NSMutableDictionary alloc] init];
+    [publicacion setValue:@"Tercer publicacion!!!" forKey:@"mensaje"];
+    [publicacion setValue:@"EL DEBATE" forKey:@"autor"];
+    
+    [publicaciones addObject:publicacion];
+    
+    NSLog(@"%@", publicaciones);
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+//Agregado Manual.
+//Se ejecuta despues de que se mostro la pantalla y se cargaron las configuraciones.
+- (void) viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+
+}
+
+//Agregado Manual.
+//Antes de que se muestre la pantalla, y se cargaron las configuraciones.
+- (void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,26 +110,47 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if( section == 0 )
+    {
+        return [publicaciones count];
+    
+    }
+    else
+        return 0;
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    //return 0;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"timeLineCell" forIndexPath:indexPath];
+    
+    
+    NSMutableDictionary *obj = [publicaciones objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [obj objectForKey:@"mensaje"];
+    cell.detailTextLabel.text = [obj objectForKey:@"autor"];
+    
+    
+    
+    
     
     // Configure the cell...
     
     return cell;
 }
-*/
+
+- (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -105,15 +190,22 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ( [[segue identifier] isEqualToString:@"detallePublicacionSegue"]  )
+    {
+        DetallePublicacionTableViewController *dpvc = [segue destinationViewController];
+        NSIndexPath *index = [self.tableView indexPathForSelectedRow];
+        dpvc.publicacion = [publicaciones objectAtIndex:index.row];
+        
+        NSLog(@"%@", dpvc.publicacion);
+    }
+    
 }
-*/
+
 
 @end
