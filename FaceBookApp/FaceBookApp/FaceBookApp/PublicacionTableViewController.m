@@ -7,6 +7,7 @@
 //
 
 #import "PublicacionTableViewController.h"
+#define CARACTERES 10
 
 @interface PublicacionTableViewController ()
 
@@ -27,14 +28,84 @@
 {
     [super viewDidLoad];
     
+    //Se crea un gesto.
+    UITapGestureRecognizer  *tap;
+    tap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(cerrarTeclado)];
+    
+    //Se agrega a la vista.
+    [self.view addGestureRecognizer:tap];
+    
     //Con esta linea de codigo nuestro componente grafico ya esta siendo reconocido por una clase.
     self.txtEstado.delegate = self;
+    
+    self.txtCaracteres.text = [NSString stringWithFormat:@"%d", CARACTERES];
+}
+
+- (IBAction) publicar:(UIButton *)sender{
+    NSUserDefaults *ud;
+    ud = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *obj = @{
+        @"autor" : @"Flavio Cortez",
+        @"mensaje" : self.txtEstado.text
+        };
+    
+    NSMutableArray *publicaciones = [ud objectForKey:@"publicaciones"];
+    
+    if( publicaciones == nil )
+    {
+        publicaciones = [[NSMutableArray alloc] init];
+    
+    }
+    
+    [publicaciones addObject:obj];
+    
+    [ud setValue:publicaciones forKeyPath:@"publicaciones"];
+    
+    [ud synchronize];
+    
+    self.txtEstado.text = @"";
+    
+    self.txtCaracteres.text = [NSString stringWithFormat:@"%d", CARACTERES];
+    
+}
+
+- (void) cerrarTeclado
+{
+    [self.txtEstado resignFirstResponder];
+    //NSLog(@"gesto");
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    //NSLog(@"%@", string);
+    //return true;
+    
+    
+    NSString *text = [textField.text stringByReplacingCharactersInRange: range withString:string];
+    
+    
+
+    
+    if( [text length] > CARACTERES )
+    {
+        self.txtCaracteres.textColor = [UIColor redColor];
+        return NO;
+    }
+    
+    else
+    {
+        self.txtCaracteres.text = [NSString stringWithFormat:@"%d",CARACTERES - [text length]];
+        self.txtCaracteres.textColor = [UIColor blackColor];
+        
+    }
+    return YES;
 }
 
 #pragma mark - Table view data source

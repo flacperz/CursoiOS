@@ -77,7 +77,14 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¿Como te sientes?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIk-hc-Tdi">
-                                                    <rect key="frame" x="20" y="17" width="280" height="21"/>
+                                                    <rect key="frame" x="20" y="17" width="156" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="140" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU4-KG-TZX">
+                                                    <rect key="frame" x="272" y="17" width="35" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -133,9 +140,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="RuI-Ng-N1R">
-                        <barButtonItem key="rightBarButtonItem" title="Publicar" id="o0K-P1-yGq"/>
+                        <barButtonItem key="rightBarButtonItem" title="Publicar" id="o0K-P1-yGq">
+                            <connections>
+                                <action selector="publicar:" destination="zaT-2L-MUa" id="eEE-A5-Mhu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="txtCaracteres" destination="MU4-KG-TZX" id="RDH-7t-6av"/>
                         <outlet property="txtEstado" destination="UcL-ue-R9p" id="3N6-PZ-hLE"/>
                     </connections>
                 </tableViewController>
@@ -143,11 +155,11 @@
             </objects>
             <point key="canvasLocation" x="-2109" y="-2707"/>
         </scene>
-        <!--Navigation Controller - Insertar-->
+        <!--Navigation Controller-->
         <scene sceneID="FB9-0y-Q9d">
             <objects>
                 <navigationController definesPresentationContext="YES" id="LrI-2Y-xGW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Insertar" systemItem="more" id="5NH-kH-9SQ"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="5NH-kH-9SQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="E6z-d9-z8m">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -203,7 +215,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="txtMensaje" text="Mensaje de la publicación" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-9T-0fp">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="txtMensaje" editable="NO" text="Mensaje de la publicación" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-9T-0fp">
                                                     <rect key="frame" x="38" y="94" width="240" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -235,7 +247,7 @@
         <scene sceneID="0M0-wW-eIW">
             <objects>
                 <navigationController storyboardIdentifier="detallePublicacionSegue" definesPresentationContext="YES" id="mmn-mG-FB1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="cxZ-Bu-pRv"/>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="cxZ-Bu-pRv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="enF-tu-O0E">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
