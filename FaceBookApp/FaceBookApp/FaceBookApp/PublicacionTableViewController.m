@@ -50,17 +50,20 @@
         @"mensaje" : self.txtEstado.text
         };
     
-    NSMutableArray *publicaciones = [ud objectForKey:@"publicaciones"];
-    
-    if( publicaciones == nil )
-    {
-        publicaciones = [[NSMutableArray alloc] init];
-    
-    }
+    NSMutableArray *publicaciones = [[NSMutableArray alloc]init];
     
     [publicaciones addObject:obj];
     
-    [ud setValue:publicaciones forKeyPath:@"publicaciones"];
+    if( [ud objectForKey:@"publicaciones"] != nil )
+    {
+        [publicaciones addObjectsFromArray:[ud objectForKey:@"publicaciones"]];
+    }
+    
+    [ud setObject:publicaciones forKey:@"publicaciones"];
+    
+    
+    
+    //[ud setValue:publicaciones forKeyPath:@"publicaciones"];
     
     [ud synchronize];
     
