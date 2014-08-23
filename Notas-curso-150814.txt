@@ -26,6 +26,12 @@ Ejemplo de apuntador:
 @property: Define una propiedad dentro de una clase.
 
 
+NSUserDefault :
+
+Clase que sirve para tener información persistente dentro de la aplicación, con el uso de ella se mantienen datos al apagar el teléfono, cerrar la aplicación, etc.
+
+
+
 
 
 
