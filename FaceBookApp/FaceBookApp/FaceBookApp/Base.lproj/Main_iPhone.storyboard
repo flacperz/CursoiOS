@@ -333,7 +333,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Publicacion" id="P0T-xl-AXe">
-                        <barButtonItem key="rightBarButtonItem" title="Editar" id="rKj-l3-BFY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Editar" id="rKj-l3-BFY">
+                            <connections>
+                                <action selector="editarPublicacion:" destination="c8G-yf-qRb" id="ygn-8M-aeP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lblAutor" destination="yQc-rs-5bO" id="8o4-cw-6XC"/>

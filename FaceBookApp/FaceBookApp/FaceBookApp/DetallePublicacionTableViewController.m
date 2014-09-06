@@ -28,7 +28,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:<#animated#>];
+    [super viewWillAppear:animated];
     
     editando = NO;
 }
@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     
-    odm = [[ObjectDataMaper alloc]];
+    odm = [[ObjectDataMaper alloc]init];
     
     self.lblAutor.text = [self.publicacion objectForKey:@"autor"];
     self.textMensaje.text = [self.publicacion objectForKey:@"mensaje"];
@@ -97,6 +97,11 @@
     {
         editando = NO;
         self.navigationItem.rightBarButtonItem.title = @"Editar";
+        
+        if( ![odm editarPublicacion:self.publicacion]){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se pudo actualizar la publicacio." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     }
     else
     {

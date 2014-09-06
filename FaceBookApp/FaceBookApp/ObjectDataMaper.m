@@ -22,6 +22,7 @@
     
     pub = [NSEntityDescription insertNewObjectForEntityForName:@"Publicaciones" inManagedObjectContext:self.context];
     
+    pub.objectId = [self genearId] + 1;
     pub.mensaje = [publicacion objectForKey:@"mensaje"];
     pub.autor = [publicacion objectForKey:@"autor"];
     pub.latitud = [publicacion objectForKey:@"latitud"];
@@ -32,6 +33,27 @@
     if( error != nil)
         return NO;
     return YES;
+}
+
+-(int) genearId{
+    
+    NSError *error;
+    self.request = [[NSFetchRequest alloc] init];
+    self.appDelegate = [[UIApplication sharedApplication] delegate];
+    self.context = [self.appDelegate managedObjectContext];
+    
+    [self.request setEntity : [NSEntityDescription entityForName:@"Publicaciones" inManagedObjectContext:self.context]];
+    
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    NSArray *pubs = [self.context executeFetchRequest:self.request error:&error];
+    
+    if (error != nil)
+        return [pubs count];
+    else
+        return 0;
+    
+    
 }
 
 -(NSMutableArray *) obtenerPublicaciones{
@@ -55,7 +77,7 @@
     for(Publicacion *pub in pubs)
     {
         obj = @{
-                @"id"       : [pub objectID],
+                @"id"       : [NSString stringWithFormat:@"%d", pub.objectId],
                 @"mensaje" : pub.mensaje,
                 @"autor"    : pub.autor,
                 @"latitud" : pub.latitud,
@@ -100,7 +122,7 @@
     self.context = [self.appDelegate managedObjectContext];
     
     
-    [self.request entity: [[NSEntityDescription entityForName:@"Publicaciones" inManagedObjectContext:self.context]]];
+    [self.request setEntity: [NSEntityDescription entityForName:@"Publicaciones" inManagedObjectContext:self.context]];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF == %@", [publicacion objectForKey:@"id"]];
     
@@ -113,6 +135,10 @@
     pub.latitud = [publicacion objectForKey:@"latitud"];
     pub.longitud = [publicacion objectForKey:@"longitud"];
     
+    [self.context save:&error];
+    
+    if(error != nil)
+        return NO;    
     
     return  YES;
 
