@@ -111,6 +111,8 @@
 }
 
 
+
+
 //Version donde no se guardaba en base de datos.
 -(IBAction)publicarDos:(UIButton *)sender{
     NSUserDefaults *ud;

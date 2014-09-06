@@ -8,6 +8,7 @@
 
 #import "TimeLineTableViewController.h"
 #import "DetallePublicacionTableViewController.h"
+#import "ObjectDataMaper.h"
 
 @interface TimeLineTableViewController ()
 
@@ -17,6 +18,8 @@
     
     //Variable de instancia.
     NSMutableArray *publicaciones;
+    
+    ObjectDataMaper *odm;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -34,6 +37,8 @@
     [super viewDidLoad];
     
     publicaciones = [[NSMutableArray alloc] init];
+    
+    odm = [[ObjectDataMaper alloc] init];
     
     /*
      Mensaje:
@@ -101,10 +106,21 @@
 
 //Agregado Manual.
 //Antes de que se muestre la pantalla, y se cargaron las configuraciones.
+/*
 - (void) viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
 
+}
+ */
+
+- (void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    publicaciones = [odm obtenerPublicaciones];
+    [self.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,6 +130,33 @@
 }
 
 #pragma mark - Table view data source
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        
+        NSDictionary *pub = [publicaciones objectAtIndex : [[self.tableView indexPathForSelectedRow] row]];
+        
+        NSManagedObjectID *objectID = [ pub objectForKey:@"id"];
+        
+        //Ejecutamos eliminar publicación, si no se elimina de la base de datos, mostramos el alert.
+        if( ![odm eliminarPublicacion:(NSManagedObjectID * ) objectID] )
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se pudo eliminar la publicación." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        else
+        {
+            [publicaciones removeObjectAtIndex:indexPath.row];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        }
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

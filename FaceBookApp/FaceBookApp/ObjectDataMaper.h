@@ -18,5 +18,9 @@
 @property(strong, nonatomic) NSFetchRequest *request;
 
 -(BOOL) guardarPublicacion: (NSDictionary *) publicacion;
+-(NSMutableArray *) obtenerPublicaciones;
+
+-(BOOL) eliminarPublicacion:(NSManagedObjectID *) objectID;
+-(BOOL) editarPublicacion : (NSDictionary *) publicacion;
 
 @end

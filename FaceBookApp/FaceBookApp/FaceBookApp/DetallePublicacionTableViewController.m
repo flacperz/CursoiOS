@@ -7,12 +7,16 @@
 //
 
 #import "DetallePublicacionTableViewController.h"
+#import "ObjectDataMaper.h"
 
 @interface DetallePublicacionTableViewController ()
 
 @end
 
-@implementation DetallePublicacionTableViewController
+@implementation DetallePublicacionTableViewController{
+    BOOL editando;
+    ObjectDataMaper *odm;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,9 +27,17 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:<#animated#>];
+    
+    editando = NO;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    odm = [[ObjectDataMaper alloc]];
     
     self.lblAutor.text = [self.publicacion objectForKey:@"autor"];
     self.textMensaje.text = [self.publicacion objectForKey:@"mensaje"];
@@ -77,6 +89,22 @@
 
 - (IBAction)cerrar:(UIBarButtonItem *)sender{
     [self dismissViewControllerAnimated: YES completion:nil];
+}
+
+- (IBAction)editarPublicacion:(id)sender{
+
+    if(editando)
+    {
+        editando = NO;
+        self.navigationItem.rightBarButtonItem.title = @"Editar";
+    }
+    else
+    {
+        editando = YES;
+        self.navigationItem.rightBarButtonItem.title = @"Guardar";
+    }
+    
+    [self.textMensaje setEditable:editando];
 }
 
 /*
