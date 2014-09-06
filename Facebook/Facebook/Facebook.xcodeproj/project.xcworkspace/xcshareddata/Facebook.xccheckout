@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0D634817-FBFF-4FCA-9F22-B0BF84B58A3B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Facebook</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>02C16AB8-4A4A-4AFA-BBC0-537AE3B926EA</key>
+		<string>https://github.com/flacperz/CursoiOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Facebook/Facebook/Facebook.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>02C16AB8-4A4A-4AFA-BBC0-537AE3B926EA</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/flacperz/CursoiOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>02C16AB8-4A4A-4AFA-BBC0-537AE3B926EA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>02C16AB8-4A4A-4AFA-BBC0-537AE3B926EA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CursoiOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
     
-    //publicaciones = [[NSMutableArray alloc] init];
+    publicaciones = [[NSMutableArray alloc] init];
     
     /*
      Mensaje:
@@ -43,18 +43,14 @@
         mensaje:"Y andale...atrapan al chapo",
         autor: "EL DEBATE"
      }
-     
+     */
     
     //Objeto publicacion
     NSMutableDictionary *publicacion = [[NSMutableDictionary alloc] init];
     
     
-    
-    
-    
-    
     //Primera publicacion
-    [publicacion setValue:@"Y andale...Atraparon al chapo!!!" forKey:@"mensaje"];
+    /*[publicacion setValue:@"Y andale...Atraparon al chapo!!!" forKey:@"mensaje"];
     [publicacion setValue:@"EL DEBATE" forKey:@"autor"];
     
     [publicaciones addObject:publicacion];
@@ -75,10 +71,10 @@
     
     [publicaciones addObject:publicacion];
     
-    NSLog(@"%@", publicaciones);
+    NSLog(@"%@", publicaciones);*/
     
     
-    */
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -92,7 +88,14 @@
     
     [super viewDidAppear:animated];
     
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     
+    NSLog(@"%@",[ud objectForKey:@"publicaciones"]);
+    
+    if([ud objectForKey:@"publicaciones"]!=nil){
+        publicaciones=[ud objectForKey:@"publicaciones"];
+        [self.tableView reloadData];
+    }
 
 }
 
@@ -101,14 +104,6 @@
 - (void) viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    
-    if( [ud objectForKey:@"publicaciones" ] != nil  )
-    {
-        publicaciones = [ud objectForKey:@"publicaciones"];
-        [self.tableView reloadData ];
-    }
 
 }
 

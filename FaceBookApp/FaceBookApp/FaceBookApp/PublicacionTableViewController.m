@@ -7,13 +7,17 @@
 //
 
 #import "PublicacionTableViewController.h"
-#define CARACTERES 10
+#import "ObjectDataMaper.h"
+#define CARACTERES 250
 
 @interface PublicacionTableViewController ()
 
 @end
 
-@implementation PublicacionTableViewController
+@implementation PublicacionTableViewController{
+    ObjectDataMaper *odm;
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,87 +32,24 @@
 {
     [super viewDidLoad];
     
-    //Se crea un gesto.
-    UITapGestureRecognizer  *tap;
-    tap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(cerrarTeclado)];
+    odm = [[ObjectDataMaper alloc] init];
     
-    //Se agrega a la vista.
-    [self.view addGestureRecognizer:tap];
     
+    UITapGestureRecognizer *tab;
+    tab = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cerrarTeclado)];
+    
+    //[self.view addGestureRecognizer:tab];
+    
+    self.caracteres.text=[NSString stringWithFormat:@"%d",CARACTERES];
     //Con esta linea de codigo nuestro componente grafico ya esta siendo reconocido por una clase.
     self.txtEstado.delegate = self;
-    
-    self.txtCaracteres.text = [NSString stringWithFormat:@"%d", CARACTERES];
 }
 
-- (IBAction) publicar:(UIButton *)sender{
-    NSUserDefaults *ud;
-    ud = [NSUserDefaults standardUserDefaults];
-    
-    NSDictionary *obj = @{
-        @"autor" : @"Flavio Cortez",
-        @"mensaje" : self.txtEstado.text
-        };
-    
-    NSMutableArray *publicaciones = [[NSMutableArray alloc]init];
-    
-    [publicaciones addObject:obj];
-    
-    if( [ud objectForKey:@"publicaciones"] != nil )
-    {
-        [publicaciones addObjectsFromArray:[ud objectForKey:@"publicaciones"]];
-    }
-    
-    [ud setObject:publicaciones forKey:@"publicaciones"];
-    
-    
-    
-    //[ud setValue:publicaciones forKeyPath:@"publicaciones"];
-    
-    [ud synchronize];
-    
-    self.txtEstado.text = @"";
-    
-    self.txtCaracteres.text = [NSString stringWithFormat:@"%d", CARACTERES];
-    
-}
-
-- (void) cerrarTeclado
-{
-    [self.txtEstado resignFirstResponder];
-    //NSLog(@"gesto");
-}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    //NSLog(@"%@", string);
-    //return true;
-    
-    
-    NSString *text = [textField.text stringByReplacingCharactersInRange: range withString:string];
-    
-    
-
-    
-    if( [text length] > CARACTERES )
-    {
-        self.txtCaracteres.textColor = [UIColor redColor];
-        return NO;
-    }
-    
-    else
-    {
-        self.txtCaracteres.text = [NSString stringWithFormat:@"%d",CARACTERES - [text length]];
-        self.txtCaracteres.textColor = [UIColor blackColor];
-        
-    }
-    return YES;
 }
 
 #pragma mark - Table view data source
@@ -135,8 +76,81 @@
     return 0;
 }
 
+#pragma mark-TextField Ddelegate
+-(void)cerrarTeclado{
+    [self.txtEstado resignFirstResponder];
+}
+
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     return [ textField resignFirstResponder ];
+}
+
+#pragma mark- IBAction
+
+-(IBAction)publicar:(UIButton *)sender{
+    
+    NSDictionary *obj=@{
+                        @"autor": @"Flavio Cortez",
+                        @"mensaje": self.txtEstado.text,
+                        @"latitud" : @"27.0",
+                        @"longitud" : @"100.0"
+                        };
+    
+    //Guardando en core data.
+    if (![odm guardarPublicacion:obj])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se pudo guardar en base de datos." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    
+    }
+    self.txtEstado.text=@"";
+    self.caracteres.text=[NSString stringWithFormat:@"%d",CARACTERES];
+
+    
+}
+
+
+//Version donde no se guardaba en base de datos.
+-(IBAction)publicarDos:(UIButton *)sender{
+    NSUserDefaults *ud;
+    ud=[NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *obj=@{
+                        @"autor": @"Flavio Cortez",
+                        @"mensaje": self.txtEstado.text
+                       };
+    
+    NSMutableArray *publicaciones = [[NSMutableArray alloc] init]; //[ud objectForKey:@"publicaciones"];
+    [publicaciones addObject:obj];    
+    
+    if([ud objectForKey:@"publicaciones"] !=nil)
+        [publicaciones addObjectsFromArray:[ud objectForKey:@"publicaciones"]];
+    
+    [ud setValue:publicaciones forKeyPath:@"publicaciones"];
+    
+    [ud synchronize];
+    
+    self.txtEstado.text=@"";
+    self.caracteres.text=[NSString stringWithFormat:@"%d",CARACTERES];
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSString *text=[textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    
+    
+    if([text length]>CARACTERES){
+        self.caracteres.textColor=[UIColor redColor];
+        return NO;
+    }
+    else{
+        self.caracteres.text=[NSString stringWithFormat:@"%d",CARACTERES-[text length]];
+        self.caracteres.textColor=[UIColor colorWithRed:53/255.0 green:156/255.0 blue:255/255.0 alpha:0.5];
+    }
+    
+    return YES;
 }
 
 /*

@@ -12,9 +12,8 @@
     UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *txtEstado;
+@property (weak, nonatomic) IBOutlet UILabel *caracteres;
 
-@property (weak, nonatomic) IBOutlet UILabel *txtCaracteres;
-
-- (IBAction)publicar:(UIButton *)sender;
+-(IBAction)publicar:(UIButton *)sender;
 
 @end
